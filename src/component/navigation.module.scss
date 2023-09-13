@@ -1,0 +1,35 @@
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    > .navigation_left {
+        display: flex;
+        gap: 17px;
+        width: 314px;
+        height: 42px;
+        > img {
+            width: fit-content;
+        }
+        > div {
+            display: flex;
+            flex-direction: column;
+            > h1 {
+                font-size: 1.1rem;
+            }
+            > b {
+                font-size: 1rem;
+            }
+        }
+    }
+
+    > .navigation_right {
+        align-items: center;
+        display: flex;
+        gap: 9px;
+        padding: 15px 23px 16px 23px;
+        background: #fe5f1e;
+
+        width: fit-content;
+        border-radius: 30px;
+    }
+}
