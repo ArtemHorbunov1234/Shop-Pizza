@@ -4,17 +4,19 @@ function Navigation() {
     return (
         <div className={styles.navigation}>
             <div className={styles.navigation_left}>
-                <img src='/img/pizza-logo.png' width={38} height={38} alt='' />
-                <div>
-                    <h1>REACT PIZZA</h1>
-                    <p>найсмачніша піца у всесвіті</p>
-                </div>
+                <h1>Все</h1>
+                <h1>М&apos;ясні</h1>
+                <h1>Вегетаріанська</h1>
+                <h1>Гриль</h1>
+                <h1>Гострі</h1>
+                <h1>Закриті</h1>
             </div>
             <div className={styles.navigation_right}>
-                <b>570 грн</b>
-                <img src='img/line-right.svg' alt='line' />
-                <img src='img/cart-right.svg' alt='cart' />
-                <b>3</b>
+                <img src='img/navigation_arrow.svg' alt='arrow' />
+                <h1>Сортування за:</h1>
+                <h1>
+                    <span>популярности</span>
+                </h1>
             </div>
         </div>
     );
