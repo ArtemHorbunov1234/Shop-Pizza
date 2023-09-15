@@ -1,9 +1,3 @@
-.card_pizza {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 41px;
-}
-
 .card {
     display: flex;
     flex-direction: column;
@@ -11,6 +5,7 @@
     width: 280px;
     > h1 {
         text-align: center;
+        font-size: 1.4rem;
     }
 
     > img {
@@ -28,24 +23,23 @@
             > .card_pizza--dough {
                 display: flex;
                 justify-content: space-around;
-                > h2 {
+                > li {
+                    cursor: pointer;
                     padding: 5px 20px 5px 20px;
-                    border-radius: 10px;
+                    border-radius: 5px;
                     font-size: 1.1rem;
                     letter-spacing: 1.5px;
-                }
-
-                > :nth-child(1) {
-                    background-color: white;
                 }
             }
             > .card_pizza--size {
                 display: flex;
                 justify-content: space-around;
                 padding: 5px;
-                gap: 21px;
+                gap: 3px;
                 > b {
-                    padding: 5px;
+                    cursor: pointer;
+                    padding: 5px 15px 5px 15px;
+                    border-radius: 5px;
                 }
             }
         }

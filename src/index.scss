@@ -8,6 +8,14 @@ body {
     box-sizing: border-box;
 }
 
+ul {
+    list-style-type: none;
+}
+
+li {
+    list-style-type: none;
+}
+
 .content {
     margin-top: 3rem;
     margin-inline: auto;
@@ -22,6 +30,12 @@ hr {
     max-width: 1300px;
     margin-top: 2rem;
     margin-bottom: 2rem;
+}
+
+.card_pizza {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 41px;
 }
 
 .content_input {
@@ -43,4 +57,13 @@ hr {
             transform: translate(10px, 8px);
         }
     }
+}
+
+#active {
+    color: white;
+    background: #282828;
+}
+
+#active_card {
+    background: white;
 }

@@ -5,7 +5,7 @@
     > .navigation_left {
         display: flex;
         gap: 9px;
-        > h1 {
+        > li {
             cursor: pointer;
             padding: 13px 25px 13px 25px;
             font-size: 1.15rem;
@@ -18,7 +18,7 @@
         display: flex;
         gap: 5px;
         align-items: center;
-        > h1 {
+        > li {
             font-size: 1.15rem;
             > span {
                 color: #fe5f1e;

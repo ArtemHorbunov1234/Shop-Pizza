@@ -1,135 +1,62 @@
+import { useState } from 'react';
 import styles from './card.module.scss';
+import PropTypes from 'prop-types';
 
-function Card() {
+function Card({ name, price, imgUrl, sizes, types }) {
+    const [numberOfPizza, setNumberOfPizza] = useState(0);
+    const [activeType, setActiveType] = useState(0);
+    const [activeSize, setActiveSize] = useState(0);
+
+    const typeNames = ['тонке', 'традиційне'];
     return (
-        <div className={styles.card_pizza}>
-            <div className={styles.card}>
-                <img src='img/pizza-1.svg' alt='pizza' />
-                <h1>Чізбургер-піца</h1>
-                <div>
-                    <div className={styles.card_top}>
-                        <div className={styles['card_pizza--dough']}>
-                            <h2>тонке</h2>
-                            <h2>традиційне</h2>
-                        </div>
-                        <div className={styles['card_pizza--size']}>
-                            <b>26см</b>
-                            <b>30см</b>
-                            <b>40см</b>
-                        </div>
+        <div className={styles.card}>
+            <img src={imgUrl} alt='pizza' />
+            <h1>{name}</h1>
+            <div>
+                <div className={styles.card_top}>
+                    <div className={styles['card_pizza--dough']}>
+                        {types.map((type, index) => (
+                            <li
+                                onClick={() => setActiveType(index)}
+                                id={activeType === type ? 'active_card' : ''}
+                                key={index}
+                            >
+                                {typeNames[type]}
+                            </li>
+                        ))}
                     </div>
-
-                    <div className={styles.card_bottom}>
-                        <b>от 300грн</b>
-                        <button>
-                            <img src='img/pizza-plus.svg' alt='plus' />
-                            Додати
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div className={styles.card}>
-                <img src='img/pizza-1.svg' alt='pizza' />
-                <h1>Чізбургер-піца</h1>
-                <div>
-                    <div className={styles.card_top}>
-                        <div className={styles['card_pizza--dough']}>
-                            <h2>тонке</h2>
-                            <h2>традиційне</h2>
-                        </div>
-                        <div className={styles['card_pizza--size']}>
-                            <b>26см</b>
-                            <b>30см</b>
-                            <b>40см</b>
-                        </div>
-                    </div>
-
-                    <div className={styles.card_bottom}>
-                        <b>от 300грн</b>
-                        <button>
-                            <img src='img/pizza-plus.svg' alt='plus' />
-                            Додати
-                        </button>
+                    <div className={styles['card_pizza--size']}>
+                        {sizes.map((size, index) => (
+                            <b
+                                onClick={() => setActiveSize(index)}
+                                id={activeSize === index ? 'active_card' : ''}
+                                key={index}
+                            >
+                                {size} см.
+                            </b>
+                        ))}
                     </div>
                 </div>
-            </div>
-            <div className={styles.card}>
-                <img src='img/pizza-1.svg' alt='pizza' />
-                <h1>Чізбургер-піца</h1>
-                <div>
-                    <div className={styles.card_top}>
-                        <div className={styles['card_pizza--dough']}>
-                            <h2>тонке</h2>
-                            <h2>традиційне</h2>
-                        </div>
-                        <div className={styles['card_pizza--size']}>
-                            <b>26см</b>
-                            <b>30см</b>
-                            <b>40см</b>
-                        </div>
-                    </div>
 
-                    <div className={styles.card_bottom}>
-                        <b>от 300грн</b>
-                        <button>
-                            <img src='img/pizza-plus.svg' alt='plus' />
-                            Додати
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div className={styles.card}>
-                <img src='img/pizza-1.svg' alt='pizza' />
-                <h1>Чізбургер-піца</h1>
-                <div>
-                    <div className={styles.card_top}>
-                        <div className={styles['card_pizza--dough']}>
-                            <h2>тонке</h2>
-                            <h2>традиційне</h2>
-                        </div>
-                        <div className={styles['card_pizza--size']}>
-                            <b>26см</b>
-                            <b>30см</b>
-                            <b>40см</b>
-                        </div>
-                    </div>
-
-                    <div className={styles.card_bottom}>
-                        <b>от 300грн</b>
-                        <button>
-                            <img src='img/pizza-plus.svg' alt='plus' />
-                            Додати
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div className={styles.card}>
-                <img src='img/pizza-1.svg' alt='pizza' />
-                <h1>Чізбургер-піца</h1>
-                <div>
-                    <div className={styles.card_top}>
-                        <div className={styles['card_pizza--dough']}>
-                            <h2>тонке</h2>
-                            <h2>традиційне</h2>
-                        </div>
-                        <div className={styles['card_pizza--size']}>
-                            <b>26см</b>
-                            <b>30см</b>
-                            <b>40см</b>
-                        </div>
-                    </div>
-
-                    <div className={styles.card_bottom}>
-                        <b>от 300грн</b>
-                        <button>
-                            <img src='img/pizza-plus.svg' alt='plus' />
-                            Додати
-                        </button>
-                    </div>
+                <div className={styles.card_bottom}>
+                    <b>от {price}грн</b>
+                    <button onClick={() => setNumberOfPizza(numberOfPizza + 1)}>
+                        <img src='img/pizza-plus.svg' alt='plus' />
+                        Додати
+                        <b>{numberOfPizza > 0 ? numberOfPizza : null}</b>
+                    </button>
                 </div>
             </div>
         </div>
     );
 }
+
+Card.propTypes = {
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    imgUrl: PropTypes.string.isRequired,
+    sizes: PropTypes.array.isRequired,
+    types: PropTypes.array.isRequired,
+};
 
 export default Card;
