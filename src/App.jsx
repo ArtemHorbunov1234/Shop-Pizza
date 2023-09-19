@@ -1,8 +1,22 @@
 import Header from './component/Header';
 import Navigation from './component/Navigation';
-import Card from './component/Card';
-import items from './pizza.json';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import axios from 'axios';
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Cart from './pages/Cart';
 function App() {
+    const [isLoading, setIsLoading] = useState(true);
+    const [items, setItems] = useState([]);
+    useEffect(() => {
+        async function fetchDate() {
+            const ItemsResponse = await axios.get('https://6509be44f6553137159befd1.mockapi.io/items');
+            setItems(ItemsResponse.data);
+            setIsLoading(false);
+        }
+        fetchDate();
+    }, []);
     return (
         <div className='content'>
             <Header />
@@ -15,18 +29,12 @@ function App() {
                     <input type='text' />
                 </div>
             </div>
-            <div className='card_pizza'>
-                {items.map((item) => (
-                    <Card
-                        key={item.id}
-                        name={item.name}
-                        price={item.price}
-                        imgUrl={item.imgUrl}
-                        sizes={item.sizes}
-                        types={item.types}
-                    />
-                ))}
-            </div>
+            <Routes>
+                <Route exact path='/' element={<Home items={items} isLoading={isLoading} />} />
+            </Routes>
+            <Routes>
+                <Route exact path='/Cart' element={<Cart />} />
+            </Routes>
         </div>
     );
 }

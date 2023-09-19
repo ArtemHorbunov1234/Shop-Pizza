@@ -18,15 +18,38 @@
         display: flex;
         gap: 5px;
         align-items: center;
+
+        > .navigation_right--active {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background-color: white;
+            border-radius: 10px;
+            border: 1px solid gray;
+            transform: translate(93px, 98px);
+            height: 153px;
+            justify-content: center;
+            > li {
+                padding: 10px 20px 10px 20px;
+                cursor: pointer;
+            }
+        }
         > li {
             font-size: 1.15rem;
             > span {
                 color: #fe5f1e;
                 border-bottom: 1px dashed #fe5f1e;
+                cursor: pointer;
             }
         }
         > img {
             width: fit-content;
         }
     }
+}
+
+#active_selected {
+    background: #fe5f1e0d;
+    color: #fe5f1e;
 }
