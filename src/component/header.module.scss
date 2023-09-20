@@ -40,3 +40,21 @@
         }
     }
 }
+
+@media (max-width: 673px) {
+    .header {
+        > a {
+            > .header_left {
+                gap: 17px;
+                width: fit-content;
+            }
+        }
+
+        > a {
+            > .header_right {
+                gap: 9px;
+                padding: 7px 11px 7px 11px;
+            }
+        }
+    }
+}

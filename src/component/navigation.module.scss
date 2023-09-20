@@ -21,6 +21,7 @@
 
         > .navigation_right--active {
             position: absolute;
+            z-index: 1;
             display: flex;
             flex-direction: column;
             gap: 10px;
@@ -66,6 +67,32 @@
         > .navigation_left {
             > li {
                 padding: 7px 13px 7px 13px;
+            }
+        }
+    }
+}
+
+@media (max-width: 673px) {
+    .navigation {
+        > .navigation_left {
+            gap: 1px;
+            > li {
+                padding: 4px 8px 4px 8px;
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 555px) {
+    .navigation {
+        > .navigation_left {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+
+            > li {
+                padding: 8px 12px 8px 12px;
+                font-size: 1rem;
             }
         }
     }

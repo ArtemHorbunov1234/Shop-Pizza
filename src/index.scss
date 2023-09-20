@@ -105,3 +105,31 @@ hr {
         grid-template-columns: 1fr 1fr;
     }
 }
+
+@media (max-width: 673px) {
+    .content {
+        max-width: 500px;
+    }
+    .card_pizza {
+        grid-template-columns: 1fr;
+    }
+    .content_input {
+        > h1 {
+            font-size: 1.7rem;
+        }
+        > div {
+            > input {
+                font-size: 16px;
+                padding: 8px 10px 10px 42px;
+                width: 170px;
+            }
+            > img {
+                width: 20px;
+                z-index: 0;
+            }
+        }
+    }
+}
+
+@media (max-width: 555px) {
+}
