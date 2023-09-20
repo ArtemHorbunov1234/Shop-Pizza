@@ -53,3 +53,20 @@
     background: #fe5f1e0d;
     color: #fe5f1e;
 }
+
+@media (max-width: 1080px) {
+    .navigation {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 860px) {
+    .navigation {
+        > .navigation_left {
+            > li {
+                padding: 7px 13px 7px 13px;
+            }
+        }
+    }
+}

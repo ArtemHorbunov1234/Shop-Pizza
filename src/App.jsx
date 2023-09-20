@@ -1,5 +1,4 @@
 import Header from './component/Header';
-import Navigation from './component/Navigation';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
@@ -21,14 +20,7 @@ function App() {
         <div className='content'>
             <Header />
             <hr />
-            <Navigation />
-            <div className='content_input'>
-                <h1>Усі піци</h1>
-                <div>
-                    <img src='img/input-search.png' alt='search' />
-                    <input type='text' />
-                </div>
-            </div>
+
             <Routes>
                 <Route exact path='/' element={<Home items={items} isLoading={isLoading} />} />
             </Routes>

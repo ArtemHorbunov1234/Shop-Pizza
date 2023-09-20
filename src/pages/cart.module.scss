@@ -1,0 +1,105 @@
+.cart {
+    margin-top: 94px;
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    margin-inline: auto;
+
+    gap: 40px;
+    > .cart--header {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 349px;
+        > div {
+            display: flex;
+            gap: 8px;
+            > h1 {
+                font-size: 1.7rem;
+            }
+            > h2 {
+                color: #8d8d8d;
+                font-size: 1.1rem;
+                font-weight: 400;
+            }
+        }
+    }
+    > .cart--items {
+        display: flex;
+        justify-content: space-around;
+        > .cart__item {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+
+            > div {
+                > h1 {
+                    font-size: 1.3rem;
+                }
+                > h2 {
+                    font-size: 1.1rem;
+                    color: #8d8d8d;
+                    font-weight: 400;
+                }
+            }
+        }
+        > .cart__main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 91px;
+            > img {
+                cursor: pointer;
+            }
+            > div {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                > img {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    > .cart--amount {
+        display: flex;
+        justify-content: space-around;
+        gap: 263px;
+        > h1 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            > span {
+                color: #fe5f1e;
+            }
+        }
+    }
+    > .cart--footer {
+        display: flex;
+        justify-content: space-around;
+        gap: 230px;
+        > .cart--footer__exit {
+            cursor: pointer;
+            padding: 18px;
+            border-radius: 30px;
+            background-color: white;
+            border: 1px solid #d3d3d3;
+            font-size: 1rem;
+            color: #8d8d8d;
+
+            > img {
+                margin-right: 12px;
+            }
+        }
+        > .cart--footer__pay {
+            cursor: pointer;
+
+            padding: 18px;
+            border-radius: 30px;
+            background-color: #fe5f1e;
+            border: none;
+            width: 215px;
+            color: white;
+            font-size: 1rem;
+        }
+    }
+}
