@@ -97,3 +97,11 @@
         }
     }
 }
+
+@media (max-width: 441px) {
+    .navigation {
+        > .navigation_right {
+            flex-direction: column;
+        }
+    }
+}

@@ -77,3 +77,23 @@
         width: 330px;
     }
 }
+
+@media (max-width: 441px) {
+    .card {
+        width: 205px;
+
+        > img {
+            width: 160px;
+        }
+
+        > div {
+            > .card_top {
+                > .card_pizza--dough {
+                    > li {
+                        padding: 5px 10px 5px 10px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -132,4 +132,31 @@ hr {
 }
 
 @media (max-width: 555px) {
+    .content {
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 441px) {
+    .content {
+        max-width: 300px;
+    }
+    .content_input {
+        align-items: center;
+        gap: 3px;
+        > h1 {
+            font-size: 1.3rem;
+        }
+        > div {
+            > input {
+                font-size: 16px;
+                padding: 8px 10px 10px 32px;
+                width: 120px;
+            }
+            > img {
+                width: 20px;
+                z-index: 0;
+            }
+        }
+    }
 }
