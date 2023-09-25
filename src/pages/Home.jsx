@@ -3,14 +3,7 @@ import Card from '../component/Card';
 import Skeleton from '../component/PizzaBlock/skeleton';
 function Home({ isLoading, items, searchItem, setSearchItem }) {
     const skeletons = [...new Array(8)].map((_, index) => <Skeleton key={index} />);
-    const pizzas = items
-        .filter((obj) => {
-            if (obj.name.toLowerCase().includes(searchItem.toLowerCase())) {
-                return true;
-            }
-            return false;
-        })
-        .map((item) => <Card key={item.id} {...item} />);
+    const pizzas = items.map((item) => <Card key={item.id} {...item} />);
     return (
         <>
             <div className='content_input'>
