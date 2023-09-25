@@ -1,4 +1,5 @@
 import styles from '../pages/cart.module.scss';
+import { Link } from 'react-router-dom';
 
 function Cart() {
     return (
@@ -54,13 +55,18 @@ function Cart() {
                     Усього піц:
                     <b> 3 шт</b>
                 </h1>
-                <h1>{/* Сума замовлення: <span>900 грн</span> */}</h1>
+                <h1>
+                    Сума замовлення: <span>900 грн</span>
+                </h1>
             </div>
             <div className={styles['cart--footer']}>
-                <button className={styles['cart--footer__exit']}>
-                    <img src='img/cart-exit_button.svg' alt='exit' />
-                    Повернутися назад
-                </button>
+                <Link to='/'>
+                    <button className={styles['cart--footer__exit']}>
+                        <img src='img/cart-exit_button.svg' alt='exit' />
+                        Повернутися назад
+                    </button>
+                </Link>
+
                 <button className={styles['cart--footer__pay']}>Оплатити зараз</button>
             </div>
         </div>
