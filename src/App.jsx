@@ -11,6 +11,7 @@ function App() {
     const [items, setItems] = useState([]);
     const [categoryId, setCategoryId] = useState(1);
     const [sort, setSort] = useState({ name: 'популярности', sortProperty: 'rating' });
+    const [searchItem, setSearchItem] = useState('');
 
     useEffect(() => {
         setIsLoading(true);
@@ -37,9 +38,18 @@ function App() {
                 setSortValue={(id) => setSort(id)}
             />
             <Routes>
-                <Route exact path='/' element={<Home items={items} isLoading={isLoading} />} />
-            </Routes>
-            <Routes>
+                <Route
+                    exact
+                    path='/'
+                    element={
+                        <Home
+                            items={items}
+                            isLoading={isLoading}
+                            searchItem={searchItem}
+                            setSearchItem={setSearchItem}
+                        />
+                    }
+                />
                 <Route exact path='/Cart' element={<Cart />} />
             </Routes>
         </div>
