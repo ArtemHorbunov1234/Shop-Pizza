@@ -1,11 +1,17 @@
 import PropTypes from 'prop-types';
 import Card from '../component/Card';
 import Skeleton from '../component/PizzaBlock/skeleton';
-function Home({ isLoading, items, searchItem, setSearchItem }) {
+import { useContext } from 'react';
+import { SearchContext } from '../App';
+import Navigation from '../component/Navigation';
+function Home({ setCategoryId }) {
+    const { searchItem, setSearchItem, setSort, items, isLoading } = useContext(SearchContext);
     const skeletons = [...new Array(8)].map((_, index) => <Skeleton key={index} />);
     const pizzas = items.map((item) => <Card key={item.id} {...item} />);
     return (
         <>
+            <Navigation setCategoryId={(id) => setCategoryId(id)} setSortValue={(id) => setSort(id)} />
+
             <div className='content_input'>
                 <h1>Усі піци</h1>
                 <div>
@@ -31,10 +37,7 @@ function Home({ isLoading, items, searchItem, setSearchItem }) {
 }
 
 Home.propTypes = {
-    isLoading: PropTypes.bool.isRequired,
-    items: PropTypes.array.isRequired,
-    searchItem: PropTypes.string.isRequired,
-    setSearchItem: PropTypes.string.isRequired,
+    setCategoryId: PropTypes.func.isRequired,
 };
 
 export default Home;

@@ -5,8 +5,11 @@ import axios from 'axios';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Cart from './pages/Cart';
-import Navigation from './component/Navigation';
 import Pagination from './component/Pagination/Pagination';
+import { createContext } from 'react';
+export const SearchContext = createContext();
+export const NavigationValue = createContext();
+
 function App() {
     const [isLoading, setIsLoading] = useState(true);
     const [items, setItems] = useState([]);
@@ -28,33 +31,20 @@ function App() {
         }
         window.scrollTo(0, 0);
         fetchDate();
-    }, [categoryId, sort, searchItem, currentPage]);
+    }, [category, search, currentPage, sort]);
     return (
         <div className='content'>
-            <Header />
-            <hr />
-            <Navigation
-                value={categoryId}
-                setCategoryId={(id) => setCategoryId(id)}
-                sortValue={sort}
-                setSortValue={(id) => setSort(id)}
-            />
-            <Routes>
-                <Route
-                    exact
-                    path='/'
-                    element={
-                        <Home
-                            items={items}
-                            isLoading={isLoading}
-                            searchItem={searchItem}
-                            setSearchItem={setSearchItem}
-                        />
-                    }
-                />
-                <Route exact path='/Cart' element={<Cart />} />
-            </Routes>
-            <Pagination onChangePage={(number) => setCurrentPage(number)} />
+            <SearchContext.Provider value={{ searchItem, setSearchItem, setSort, items, isLoading }}>
+                <NavigationValue.Provider value={{ categoryId, sort }}>
+                    <Header />
+                    <hr />
+                    <Routes>
+                        <Route exact path='/' element={<Home setCategoryId={(id) => setCategoryId(id)} />} />
+                        <Route exact path='/Cart' element={<Cart />} />
+                    </Routes>
+                    <Pagination onChangePage={(number) => setCurrentPage(number)} />
+                </NavigationValue.Provider>
+            </SearchContext.Provider>
         </div>
     );
 }
