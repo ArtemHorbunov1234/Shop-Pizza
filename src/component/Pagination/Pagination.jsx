@@ -20,7 +20,7 @@ function Pagination({ onChangePage }) {
 }
 
 Pagination.propTypes = {
-    onChangePage: PropTypes.number.isRequired,
+    onChangePage: PropTypes.func.isRequired,
 };
 
 export default Pagination;
