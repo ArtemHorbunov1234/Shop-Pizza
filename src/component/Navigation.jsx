@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import styles from './navigation.module.scss';
-import PropTypes from 'prop-types';
-import { useContext } from 'react';
-import { NavigationValue } from '../App';
+import { useSelector, useDispatch } from 'react-redux';
+import { setSort, setCategory } from '../redux/slices/filterSlice';
 
-function Navigation({ setCategoryId, setSortValue }) {
-    const { categoryId, sort } = useContext(NavigationValue);
+function Navigation() {
+    const dispatch = useDispatch();
+    const sort = useSelector((state) => state.filter.sort);
+    const categoryId = useSelector((state) => state.filter.categoryId);
 
     const [isVisible, setIsVisible] = useState(false);
     const list = [
@@ -14,9 +15,11 @@ function Navigation({ setCategoryId, setSortValue }) {
         { name: 'алфавит', sortProperty: 'tittle' },
     ];
     const categories = ['Все', `М'ясні`, 'Вегетаріанська', 'Гриль', 'Гострі', 'Закриті'];
-
-    const onClickIsItem = (i) => {
-        setSortValue(i);
+    const setCategoryId = (i) => {
+        dispatch(setCategory(i));
+    };
+    const onClickIsItem = (obj) => {
+        dispatch(setSort(obj));
         setIsVisible(!isVisible);
     };
     return (
@@ -51,10 +54,5 @@ function Navigation({ setCategoryId, setSortValue }) {
         </nav>
     );
 }
-
-Navigation.propTypes = {
-    setCategoryId: PropTypes.func.isRequired,
-    setSortValue: PropTypes.func.isRequired,
-};
 
 export default Navigation;
