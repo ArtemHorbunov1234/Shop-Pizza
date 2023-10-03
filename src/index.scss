@@ -21,6 +21,17 @@ a {
     color: black;
 }
 
+input {
+    &::placeholder {
+        text-align: center;
+        font-size: 0.9rem;
+        opacity: 70%;
+        color: gray;
+        font-weight: 200;
+        letter-spacing: 0.6px;
+    }
+}
+
 .content {
     margin-top: 3rem;
     margin-inline: auto;
@@ -136,6 +147,12 @@ hr {
             }
         }
     }
+    input {
+        &::placeholder {
+            text-align: center;
+            font-size: 0.7rem;
+        }
+    }
 }
 
 @media (max-width: 555px) {
@@ -164,6 +181,12 @@ hr {
                 width: 20px;
                 z-index: 0;
             }
+        }
+    }
+    input {
+        &::placeholder {
+            text-align: center;
+            font-size: 0.5rem;
         }
     }
 }

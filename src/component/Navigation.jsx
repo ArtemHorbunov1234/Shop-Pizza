@@ -2,6 +2,11 @@ import { useState } from 'react';
 import styles from './navigation.module.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { setSort, setCategory } from '../redux/slices/filterSlice';
+export const list = [
+    { name: 'популярности', sortProperty: 'rating' },
+    { name: 'ціна', sortProperty: 'price' },
+    { name: 'алфавит', sortProperty: 'tittle' },
+];
 
 function Navigation() {
     const dispatch = useDispatch();
@@ -9,11 +14,7 @@ function Navigation() {
     const categoryId = useSelector((state) => state.filter.categoryId);
 
     const [isVisible, setIsVisible] = useState(false);
-    const list = [
-        { name: 'популярности', sortProperty: 'rating' },
-        { name: 'ціна', sortProperty: 'price' },
-        { name: 'алфавит', sortProperty: 'tittle' },
-    ];
+
     const categories = ['Все', `М'ясні`, 'Вегетаріанська', 'Гриль', 'Гострі', 'Закриті'];
     const setCategoryId = (i) => {
         dispatch(setCategory(i));
