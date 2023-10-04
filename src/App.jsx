@@ -17,13 +17,15 @@ function App() {
     const { currentPage, categoryId, searchItem, sort } = useSelector((state) => state.filter);
     const [isLoading, setIsLoading] = useState(true);
     const [items, setItems] = useState([]);
-    const isSearch = useRef(true);
+    const isSearch = useRef(false);
+    const isMounted = useRef(false);
 
     const search = searchItem ? `&search=${searchItem}` : '';
     const category = categoryId > 0 ? `&category=${categoryId}` : '';
     useEffect(() => {
         if (window.location.search) {
             const params = qs.parse(window.location.search.substring(1));
+
             const sort = list.find((obj) => obj.sortProperty === params.sortProperty);
             dispatch(
                 setFilters({
@@ -33,7 +35,7 @@ function App() {
             );
             isSearch.current = true;
         }
-    }, []);
+    }, [dispatch]);
 
     const fetchPizzas = () => {
         setIsLoading(true);
@@ -49,19 +51,22 @@ function App() {
     };
 
     useEffect(() => {
-        if (!isSearch.current) {
+        if (!isSearch.current || window.location.search === '?sortProperty=rating&categoryId=0&currentPage=1') {
             fetchPizzas();
         }
         isSearch.current = false;
     }, [category, search, currentPage, sort.sortProperty]);
 
     useEffect(() => {
-        const queryString = qs.stringify({
-            sortProperty: sort.sortProperty,
-            categoryId,
-            currentPage,
-        });
-        navigate(`?${queryString}`);
+        if (isMounted.current) {
+            const queryString = qs.stringify({
+                sortProperty: sort.sortProperty,
+                categoryId,
+                currentPage,
+            });
+            navigate(`?${queryString}`);
+        }
+        isMounted.current = true;
     }, [categoryId, currentPage, sort.sortProperty]);
     return (
         <div className='content'>

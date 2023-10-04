@@ -2,6 +2,8 @@ import { useState } from 'react';
 import styles from './navigation.module.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { setSort, setCategory } from '../redux/slices/filterSlice';
+import { useRef } from 'react';
+import { useEffect } from 'react';
 export const list = [
     { name: 'популярности', sortProperty: 'rating' },
     { name: 'ціна', sortProperty: 'price' },
@@ -12,6 +14,7 @@ function Navigation() {
     const dispatch = useDispatch();
     const sort = useSelector((state) => state.filter.sort);
     const categoryId = useSelector((state) => state.filter.categoryId);
+    const sortRef = useRef();
 
     const [isVisible, setIsVisible] = useState(false);
 
@@ -23,6 +26,19 @@ function Navigation() {
         dispatch(setSort(obj));
         setIsVisible(!isVisible);
     };
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (!event.composedPath().includes(sortRef.current)) {
+                setIsVisible(false);
+                console.log('click');
+            }
+        };
+        document.body.addEventListener('click', handleClickOutside);
+        return () => {
+            document.body.removeEventListener('click', handleClickOutside);
+        };
+    }, []);
+
     return (
         <nav className={styles.navigation}>
             <ul className={styles.navigation_left}>
@@ -32,12 +48,13 @@ function Navigation() {
                     </li>
                 ))}
             </ul>
-            <ul className={styles.navigation_right}>
+            <ul className={styles.navigation_right} ref={sortRef}>
                 <img src='img/navigation_arrow.svg' alt='arrow' />
                 <li>Сортування за:</li>
                 <li>
                     <span onClick={() => setIsVisible(!isVisible)}>{sort.name}</span>
                 </li>
+
                 {isVisible ? (
                     <div className={styles['navigation_right--active']}>
                         {list.map((obj, index) => (
