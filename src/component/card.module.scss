@@ -48,10 +48,15 @@
             justify-content: space-between;
             align-items: center;
             margin-top: 0.5rem;
+
             > b {
                 font-size: 1.2rem;
             }
             > button {
+                &:hover {
+                    background-color: #eb5a1e;
+                    color: white;
+                }
                 align-items: center;
                 cursor: pointer;
                 background-color: white;
@@ -61,6 +66,12 @@
                 border: 1px solid #eb5a1e;
                 border-radius: 30px;
                 color: #eb5a1e;
+                > .card_bottom__count {
+                    background-color: #eb5a1e;
+                    padding: 2px 5px 2px 5px;
+                    border-radius: 10px;
+                    color: white;
+                }
             }
         }
     }

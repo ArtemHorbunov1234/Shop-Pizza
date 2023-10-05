@@ -13,6 +13,9 @@
         align-items: center;
         gap: 349px;
         > div {
+            > .cart--clear__img {
+                cursor: pointer;
+            }
             display: flex;
             gap: 8px;
             > h1 {
@@ -22,6 +25,7 @@
                 color: #8d8d8d;
                 font-size: 1.1rem;
                 font-weight: 400;
+                cursor: pointer;
             }
         }
     }
@@ -32,10 +36,14 @@
             display: flex;
             gap: 10px;
             align-items: center;
+            > img {
+                width: 80px;
+            }
 
             > div {
                 > h1 {
                     font-size: 1.3rem;
+                    width: 185px;
                 }
                 > h2 {
                     font-size: 1.1rem;
@@ -135,6 +143,7 @@
                 }
             }
         }
+
         > .cart--items {
             display: flex;
             justify-content: space-around;

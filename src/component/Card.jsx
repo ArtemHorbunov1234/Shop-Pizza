@@ -1,13 +1,29 @@
 import { useState } from 'react';
 import styles from './card.module.scss';
 import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { addItem } from '../redux/slices/cartSlice';
+const typeNames = ['тонке', 'традиційне'];
 
-function Card({ name, price, imgUrl, sizes, types }) {
-    const [numberOfPizza, setNumberOfPizza] = useState(0);
+function Card({ id, name, price, imgUrl, sizes, types }) {
+    const dispatch = useDispatch();
+    const cartItem = useSelector((state) => state.cart.items.find((obj) => obj.id === id));
     const [activeType, setActiveType] = useState(0);
     const [activeSize, setActiveSize] = useState(0);
 
-    const typeNames = ['тонке', 'традиційне'];
+    const addedCount = cartItem ? cartItem.count : 0;
+    const onClickAdd = () => {
+        const item = {
+            id,
+            name,
+            price,
+            imgUrl,
+            types: typeNames[activeType],
+            size: sizes[activeSize],
+        };
+        dispatch(addItem(item));
+    };
+
     return (
         <div className={styles.card}>
             <img src={imgUrl} alt='pizza' />
@@ -40,10 +56,12 @@ function Card({ name, price, imgUrl, sizes, types }) {
 
                 <div className={styles.card_bottom}>
                     <b>от {price}грн</b>
-                    <button onClick={() => setNumberOfPizza(numberOfPizza + 1)}>
+                    <button onClick={onClickAdd}>
                         <img src='img/pizza-plus.svg' alt='plus' />
                         Додати
-                        <b>{numberOfPizza > 0 ? numberOfPizza : null}</b>
+                        {addedCount > 0 ? (
+                            <b className={styles.card_bottom__count}>{addedCount > 0 ? addedCount : null}</b>
+                        ) : null}
                     </button>
                 </div>
             </div>
@@ -57,6 +75,7 @@ Card.propTypes = {
     imgUrl: PropTypes.string.isRequired,
     sizes: PropTypes.array.isRequired,
     types: PropTypes.array.isRequired,
+    id: PropTypes.number.isRequired,
 };
 
 export default Card;
