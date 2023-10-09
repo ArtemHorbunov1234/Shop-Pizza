@@ -53,10 +53,12 @@
                 font-size: 1.2rem;
             }
             > button {
-                &:hover {
-                    background-color: #eb5a1e;
-                    color: white;
-                }
+                // &:hover {
+                //     background-color: #eb5a1e;
+                //     color: white;
+                // }
+
+                height: 37px;
                 align-items: center;
                 cursor: pointer;
                 background-color: white;
@@ -68,8 +70,8 @@
                 color: #eb5a1e;
                 > .card_bottom__count {
                     background-color: #eb5a1e;
-                    padding: 2px 5px 2px 5px;
-                    border-radius: 10px;
+                    padding: 4px 8px 4px 8px;
+                    border-radius: 15px;
                     color: white;
                 }
             }

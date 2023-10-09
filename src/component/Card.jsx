@@ -56,7 +56,7 @@ function Card({ id, name, price, imgUrl, sizes, types }) {
 
                 <div className={styles.card_bottom}>
                     <b>от {price}грн</b>
-                    <button onClick={onClickAdd}>
+                    <button className={styles.card_bottom_hover} onClick={onClickAdd}>
                         <img src='img/pizza-plus.svg' alt='plus' />
                         Додати
                         {addedCount > 0 ? (
