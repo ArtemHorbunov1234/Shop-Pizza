@@ -1,5 +1,5 @@
 import Header from './component/Header';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Cart from './pages/Cart';
@@ -15,7 +15,6 @@ function App() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { currentPage, categoryId, searchItem, sort } = useSelector((state) => state.filter);
-    const [isLoading, setIsLoading] = useState(true);
     const isSearch = useRef(false);
     const isMounted = useRef(false);
     const search = searchItem ? `&search=${searchItem}` : '';
@@ -37,7 +36,6 @@ function App() {
     }, [dispatch]);
 
     const getPizzas = () => {
-        setIsLoading(true);
         async function fetchDate() {
             try {
                 dispatch(
@@ -51,8 +49,6 @@ function App() {
             } catch (error) {
                 alert('Помилка під час отримання піц ');
                 console.log('ERROR', error);
-            } finally {
-                setIsLoading(false);
             }
         }
         window.scrollTo(0, 0);
@@ -82,7 +78,7 @@ function App() {
             <Header />
             <hr />
             <Routes>
-                <Route exact path='/' element={<Home isLoading={isLoading} />} />
+                <Route exact path='/' element={<Home />} />
                 <Route exact path='/Cart' element={<Cart />} />
             </Routes>
         </div>

@@ -41,6 +41,16 @@ input {
     padding: 47px 51px 0px 51px;
     border-radius: 10px;
 }
+.content_error {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    > .content_error--header {
+        display: flex;
+        gap: 10px;
+    }
+}
 
 hr {
     max-width: 1300px;
