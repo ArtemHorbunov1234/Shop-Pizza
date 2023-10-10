@@ -1,7 +1,7 @@
 import Card from '../component/Card';
 import Skeleton from '../component/PizzaBlock/skeleton';
 import Navigation from '../component/Navigation';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setSearchItem } from '../redux/slices/filterSlice';
 import { useRef } from 'react';
 import debounce from 'lodash.debounce';
@@ -10,7 +10,9 @@ import { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import Pagination from '../component/Pagination/Pagination';
 
-function Home({ isLoading, items }) {
+function Home() {
+    const isLoading = useSelector((state) => state.pizza.status);
+    const items = useSelector((state) => state.pizza.items);
     const [value, setValue] = useState('');
     const skeletons = [...new Array(8)].map((_, index) => <Skeleton key={index} />);
     const pizzas = items.map((item) => <Card key={item.id} {...item} />);
@@ -55,7 +57,7 @@ function Home({ isLoading, items }) {
                     )}
                 </div>
             </div>
-            <div className='card_pizza'>{isLoading ? skeletons : pizzas}</div>
+            <div className='card_pizza'>{isLoading === 'loading' ? skeletons : pizzas}</div>
             <Pagination />
         </>
     );
@@ -63,7 +65,6 @@ function Home({ isLoading, items }) {
 
 Home.propTypes = {
     isLoading: PropTypes.bool.isRequired,
-    items: PropTypes.array.isRequired,
 };
 
 export default Home;
