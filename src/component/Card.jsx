@@ -3,6 +3,7 @@ import styles from './card.module.scss';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { addItem } from '../redux/slices/cartSlice';
+import { Link } from 'react-router-dom';
 const typeNames = ['тонке', 'традиційне'];
 
 function Card({ id, name, price, imgUrl, sizes, types }) {
@@ -26,8 +27,11 @@ function Card({ id, name, price, imgUrl, sizes, types }) {
 
     return (
         <div className={styles.card}>
-            <img src={imgUrl} alt='pizza' />
-            <h1>{name}</h1>
+            <Link to={`/pizza/${id}`}>
+                <img src={imgUrl} alt='pizza' />
+                <h1>{name}</h1>
+            </Link>
+
             <div>
                 <div className={styles.card_top}>
                     <div className={styles['card_pizza--dough']}>

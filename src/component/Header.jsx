@@ -18,8 +18,8 @@ function Header() {
             <Link to='/Cart'>
                 <div className={styles.header_right}>
                     <b>{totalPrice} грн</b>
-                    <img src='img/line-right.svg' alt='line' />
-                    <img src='img/cart-right.svg' alt='cart' />
+                    <img src='/img/line-right.svg' alt='line' />
+                    <img src='/img/cart-right.svg' alt='cart' />
                     <b>{totalCounter}</b>
                 </div>
             </Link>

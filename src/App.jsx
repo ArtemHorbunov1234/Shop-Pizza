@@ -10,6 +10,7 @@ import { setFilters } from './redux/slices/filterSlice';
 import { list } from './component/Navigation';
 import { useRef } from 'react';
 import { fetchPizzas } from './redux/slices/pizzasSlice';
+import FullPizza from './pages/FullPizza';
 
 function App() {
     const navigate = useNavigate();
@@ -80,6 +81,7 @@ function App() {
             <Routes>
                 <Route exact path='/' element={<Home />} />
                 <Route exact path='/Cart' element={<Cart />} />
+                <Route exact path='/pizza/:id' element={<FullPizza />} />
             </Routes>
         </div>
     );
