@@ -30,6 +30,7 @@ function FullPizza() {
             <img src={`/${pizza.imgUrl}`} alt='pizza' />
             <b>{pizza.price}грн</b>
         </div>
+        // 'mockapi.io'
     );
 }
 
