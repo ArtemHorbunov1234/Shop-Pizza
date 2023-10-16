@@ -59,7 +59,7 @@ function Card({ id, name, price, imgUrl, sizes, types }) {
                 </div>
 
                 <div className={styles.card_bottom}>
-                    <b>от {price}грн</b>
+                    <b>від {price}грн</b>
                     <button className={styles.card_bottom_hover} onClick={onClickAdd}>
                         <img src='img/pizza-plus.svg' alt='plus' />
                         Додати
@@ -79,7 +79,7 @@ Card.propTypes = {
     imgUrl: PropTypes.string.isRequired,
     sizes: PropTypes.array.isRequired,
     types: PropTypes.array.isRequired,
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
 };
 
 export default Card;

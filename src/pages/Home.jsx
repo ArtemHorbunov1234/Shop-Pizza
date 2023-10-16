@@ -7,7 +7,6 @@ import { useRef } from 'react';
 import debounce from 'lodash.debounce';
 import { useState } from 'react';
 import { useCallback } from 'react';
-import PropTypes from 'prop-types';
 import Pagination from '../component/Pagination/Pagination';
 
 function Home() {
@@ -73,9 +72,5 @@ function Home() {
         </>
     );
 }
-
-Home.propTypes = {
-    isLoading: PropTypes.bool.isRequired,
-};
 
 export default Home;

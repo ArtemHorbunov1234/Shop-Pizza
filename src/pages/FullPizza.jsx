@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import styles from '../pages/fullPizza.module.scss';
+import { Link } from 'react-router-dom';
 
 function FullPizza() {
     const { id } = useParams();
@@ -24,13 +26,36 @@ function FullPizza() {
     if (!pizza) {
         return 'Loading....';
     }
+    const allIngredients = pizza.ingredients;
+    console.log(allIngredients);
     return (
-        <div>
-            <h1>{pizza.name}</h1>
-            <img src={`/${pizza.imgUrl}`} alt='pizza' />
-            <b>{pizza.price}грн</b>
+        <div className={styles.container}>
+            <div className={styles.container__pizza}>
+                <div className={styles['container--left']}>
+                    <h1>{pizza.name}</h1>
+                    <img src={`/${pizza.imgUrl}`} alt='pizza' />
+                    <b>від {pizza.price} грн</b>
+                    <Link to='/'>
+                        <button className={styles.container__btn}>
+                            <img src='/img/cart-exit_button.svg' alt='exit' />
+                            Повернутися назад
+                        </button>
+                    </Link>
+                </div>
+                <div className={styles['container--right']}>
+                    <div className={styles['container--right__header']}>
+                        <h2>Інгредієнти</h2>
+                        <b>{pizza.ingredients.length}</b>
+                    </div>
+
+                    <div className={styles['container--right__ingredients']}>
+                        {pizza.ingredients.map((item, index) => (
+                            <b key={index}>{item}</b>
+                        ))}
+                    </div>
+                </div>
+            </div>
         </div>
-        // 'mockapi.io'
     );
 }
 

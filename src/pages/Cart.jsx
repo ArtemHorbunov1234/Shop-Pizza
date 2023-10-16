@@ -10,6 +10,7 @@ function Cart() {
     const onClickClear = () => {
         dispatch(clearItem());
     };
+
     const totalCounter = items.reduce((sum, item) => sum + item.count, 0);
 
     return (
@@ -26,6 +27,7 @@ function Cart() {
                             <h2>Очистити кошик</h2>
                         </div>
                     </div>
+
                     {items.map((item) => (
                         <CartItem key={item.id} {...item} />
                     ))}
