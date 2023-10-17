@@ -9,7 +9,12 @@ import { Link } from 'react-router-dom';
 function FullPizza() {
     const { id } = useParams();
     const navigate = useNavigate();
-    const [pizza, setPizza] = useState();
+    const [pizza, setPizza] = useState<{
+        name: string;
+        ingredients: Array<null>;
+        imgUrl: string;
+        price: number;
+    }>();
 
     useEffect(() => {
         async function fetchItems() {
@@ -17,7 +22,7 @@ function FullPizza() {
                 const { data } = await axios.get('https://6509be44f6553137159befd1.mockapi.io/items/' + id);
                 setPizza(data);
             } catch (error) {
-                alert('Помилка під час отримання даних про піц', error);
+                alert(`Помилка під час отримання даних про піц, ${error}`);
                 navigate('/');
             }
         }

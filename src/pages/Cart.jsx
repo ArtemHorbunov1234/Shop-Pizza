@@ -1,7 +1,7 @@
 import styles from '../pages/cart.module.scss';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import CartItem from './cartItem';
+import CartItem from './CartItem';
 import { clearItem } from '../redux/slices/cartSlice';
 
 function Cart() {

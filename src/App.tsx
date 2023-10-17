@@ -11,11 +11,12 @@ import { list } from './component/Navigation';
 import { useRef } from 'react';
 import { fetchPizzas } from './redux/slices/pizzasSlice';
 import FullPizza from './pages/FullPizza';
+import { RootState } from './redux/store';
 
 function App() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const { currentPage, categoryId, searchItem, sort } = useSelector((state) => state.filter);
+    const { currentPage, categoryId, searchItem, sort } = useSelector((state: RootState) => state.filter);
     const isSearch = useRef(false);
     const isMounted = useRef(false);
     const search = searchItem ? `&search=${searchItem}` : '';
