@@ -1,9 +1,10 @@
 import styles from './header.module.scss';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { RootState } from '../redux/store';
 function Header() {
-    const { items, totalPrice } = useSelector((state) => state.cart);
-    const totalCounter = items.reduce((sum, item) => sum + item.count, 0);
+    const { items, totalPrice } = useSelector((state: RootState) => state.cart);
+    const totalCounter = items.reduce((sum: number, item: any) => sum + item.count, 0);
     return (
         <div className={styles.header}>
             <Link to=''>

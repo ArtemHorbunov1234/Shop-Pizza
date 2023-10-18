@@ -1,14 +1,22 @@
 import { useState } from 'react';
 import styles from './card.module.scss';
-import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { addItem } from '../redux/slices/cartSlice';
 import { Link } from 'react-router-dom';
+import { RootState } from '../redux/store';
 const typeNames = ['тонке', 'традиційне'];
+type CardType = {
+    name: string;
+    price: number;
+    imgUrl: string;
+    sizes: Array<null>;
+    types: Array<null>;
+    id: string;
+};
 
-function Card({ id, name, price, imgUrl, sizes, types }) {
+function Card({ id, name, price, imgUrl, sizes, types }: CardType) {
     const dispatch = useDispatch();
-    const cartItem = useSelector((state) => state.cart.items.find((obj) => obj.id === id));
+    const cartItem: any = useSelector((state: RootState) => state.cart.items.find((obj: any) => obj.id === id));
     const [activeType, setActiveType] = useState(0);
     const [activeSize, setActiveSize] = useState(0);
 
@@ -35,7 +43,7 @@ function Card({ id, name, price, imgUrl, sizes, types }) {
             <div>
                 <div className={styles.card_top}>
                     <div className={styles['card_pizza--dough']}>
-                        {types.map((type, index) => (
+                        {types.map((type: any, index: number) => (
                             <li
                                 onClick={() => setActiveType(index)}
                                 id={activeType === type ? 'active_card' : ''}
@@ -72,14 +80,5 @@ function Card({ id, name, price, imgUrl, sizes, types }) {
         </div>
     );
 }
-
-Card.propTypes = {
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    imgUrl: PropTypes.string.isRequired,
-    sizes: PropTypes.array.isRequired,
-    types: PropTypes.array.isRequired,
-    id: PropTypes.string.isRequired,
-};
 
 export default Card;

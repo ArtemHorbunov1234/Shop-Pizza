@@ -38,7 +38,6 @@ dependencies:
   react-router-dom: 6.16.0_biqbaboplfbrettd7655fr4n2y
   sass: 1.66.1
   sccs: 0.4.3_typescript@5.2.2
-  typescript: 5.2.2
 
 devDependencies:
   '@types/react': 18.2.21
@@ -48,6 +47,7 @@ devDependencies:
   eslint-plugin-react: 7.33.2_eslint@8.49.0
   eslint-plugin-react-hooks: 4.6.0_eslint@8.49.0
   eslint-plugin-react-refresh: 0.4.3_eslint@8.49.0
+  typescript: 5.2.2
   vite: 4.4.9_sass@1.66.1
 
 packages:
@@ -4365,7 +4365,6 @@ packages:
     resolution: {integrity: sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==}
     engines: {node: '>=14.17'}
     hasBin: true
-    dev: false
 
   /ua-parser-js/1.0.36:
     resolution: {integrity: sha512-znuyCIXzl8ciS3+y3fHJI/2OhQIXbXw9MWC/o3qwyR+RGppjZHrM27CGFSKCJXi2Kctiz537iOu2KnXs1lMQhw==}

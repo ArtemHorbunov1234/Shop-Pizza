@@ -3,3 +3,4 @@ declare module '*.scss' {
     export = content;
 }
 declare module 'qs';
+declare module 'lodash.debounce';

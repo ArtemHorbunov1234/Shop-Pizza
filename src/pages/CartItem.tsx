@@ -1,10 +1,18 @@
 import styles from '../pages/cart.module.scss';
-import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { addItem, minusItem, removeItem } from '../redux/slices/cartSlice';
 import { Link } from 'react-router-dom';
+type CartItemType = {
+    name: string;
+    price: number;
+    imgUrl: string;
+    types: string[];
+    id: number;
+    count: number;
+    size: number;
+};
 
-function CartItem({ id, name, price, count, imgUrl, types, size }) {
+function CartItem({ id, name, price, count, imgUrl, types, size }: CartItemType) {
     const dispatch = useDispatch();
 
     const onClickPlus = () => {
@@ -56,14 +64,5 @@ function CartItem({ id, name, price, count, imgUrl, types, size }) {
         </div>
     );
 }
-CartItem.propTypes = {
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    imgUrl: PropTypes.string.isRequired,
-    types: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    count: PropTypes.number.isRequired,
-    size: PropTypes.number.isRequired,
-};
 
 export default CartItem;

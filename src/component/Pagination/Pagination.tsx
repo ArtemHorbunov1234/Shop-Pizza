@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 
 function Pagination() {
     const dispatch = useDispatch();
-    const onPageChange = (event) => {
+    const onPageChange = (event: any) => {
         dispatch(setCurrentPage(event.selected + 1));
     };
     return (

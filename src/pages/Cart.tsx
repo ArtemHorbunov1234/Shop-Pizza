@@ -3,15 +3,16 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import CartItem from './CartItem';
 import { clearItem } from '../redux/slices/cartSlice';
+import { RootState } from '../redux/store';
 
 function Cart() {
-    const { totalPrice, items } = useSelector((state) => state.cart);
+    const { totalPrice, items } = useSelector((state: RootState) => state.cart);
     const dispatch = useDispatch();
     const onClickClear = () => {
         dispatch(clearItem());
     };
 
-    const totalCounter = items.reduce((sum, item) => sum + item.count, 0);
+    const totalCounter = items.reduce((sum: number, item: any) => sum + item.count, 0);
 
     return (
         <>
@@ -28,7 +29,7 @@ function Cart() {
                         </div>
                     </div>
 
-                    {items.map((item) => (
+                    {items.map((item: any) => (
                         <CartItem key={item.id} {...item} />
                     ))}
 

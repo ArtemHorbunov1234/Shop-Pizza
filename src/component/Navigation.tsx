@@ -4,7 +4,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setSort, setCategory } from '../redux/slices/filterSlice';
 import { useRef } from 'react';
 import { useEffect } from 'react';
-export const list = [
+import { RootState } from '../redux/store';
+type List = {
+    name: string;
+    sortProperty: string;
+};
+export const list: List[] = [
     { name: 'популярности', sortProperty: 'rating' },
     { name: 'ціна', sortProperty: 'price' },
     { name: 'алфавит', sortProperty: 'tittle' },
@@ -12,22 +17,22 @@ export const list = [
 
 function Navigation() {
     const dispatch = useDispatch();
-    const sort = useSelector((state) => state.filter.sort);
-    const categoryId = useSelector((state) => state.filter.categoryId);
-    const sortRef = useRef();
+    const sort = useSelector((state: RootState) => state.filter.sort);
+    const categoryId = useSelector((state: RootState) => state.filter.categoryId);
+    const sortRef = useRef<HTMLUListElement>(null);
 
     const [isVisible, setIsVisible] = useState(false);
 
     const categories = ['Все', `М'ясні`, 'Вегетаріанська', 'Гриль', 'Гострі', 'Закриті'];
-    const setCategoryId = (i) => {
+    const setCategoryId = (i: number) => {
         dispatch(setCategory(i));
     };
-    const onClickIsItem = (obj) => {
+    const onClickIsItem = (obj: List) => {
         dispatch(setSort(obj));
         setIsVisible(!isVisible);
     };
     useEffect(() => {
-        const handleClickOutside = (event) => {
+        const handleClickOutside = (event: any) => {
             if (!event.composedPath().includes(sortRef.current)) {
                 setIsVisible(false);
                 console.log('click');

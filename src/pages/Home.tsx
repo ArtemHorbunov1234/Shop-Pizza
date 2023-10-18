@@ -8,28 +8,31 @@ import debounce from 'lodash.debounce';
 import { useState } from 'react';
 import { useCallback } from 'react';
 import Pagination from '../component/Pagination/Pagination';
+import { RootState } from '../redux/store';
 
 function Home() {
-    const isLoading = useSelector((state) => state.pizza.status);
-    const items = useSelector((state) => state.pizza.items);
+    const isLoading = useSelector((state: RootState) => state.pizza.status);
+    const items = useSelector((state: RootState) => state.pizza.items);
     const [value, setValue] = useState('');
     const skeletons = [...new Array(8)].map((_, index) => <Skeleton key={index} />);
-    const pizzas = items.map((item) => <Card key={item.id} {...item} />);
+    const pizzas = items.map((item: any) => <Card key={item.id} {...item} />);
     const dispatch = useDispatch();
-    const inputRef = useRef();
+    const inputRef = useRef<HTMLInputElement>(null);
     const handleClearSearch = () => {
-        inputRef.current.focus();
-        setValue('');
-        dispatch(setSearchItem(''));
+        if (inputRef.current) {
+            inputRef.current.focus();
+            setValue('');
+            dispatch(setSearchItem(''));
+        }
     };
 
     const updateSearchValue = useCallback(
-        debounce((str) => {
+        debounce((str: string) => {
             dispatch(setSearchItem(str));
         }, 350),
         [dispatch]
     );
-    const onChangeSearch = (e) => {
+    const onChangeSearch = (e: any) => {
         setValue(e.target.value);
         updateSearchValue(e.target.value);
     };
